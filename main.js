@@ -1,11 +1,29 @@
 (function(){
-  /* Always start at the top: stop the browser restoring an old scroll position (unless the link has a #section). */
+  /* Always open at the very top. Menu links scroll smoothly but never leave a #section in the address bar,
+     so reloading or reopening the page cannot jump to "Our Classes" (or any other section). */
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}
-  function top(){if(!location.hash)window.scrollTo({top:0,left:0,behavior:'instant'})}
+  function clearHash(){
+    if(!location.hash)return;
+    try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+  }
+  function top(){clearHash();window.scrollTo({top:0,left:0,behavior:'instant'})}
   top();
   window.addEventListener('load',top);
   window.addEventListener('pageshow',top);
+  document.addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a[href^="#"]');
+    if(!a)return;
+    var id=a.getAttribute('href').slice(1);
+    ev.preventDefault();
+    var el=id&&id!=='home'?document.getElementById(id):null;
+    var behavior=reduceMotion?'auto':'smooth';
+    if(el)el.scrollIntoView({behavior:behavior,block:'start'});
+    else window.scrollTo({top:0,behavior:behavior});
+    clearHash();
+  });
 })();
+
 
 (function(){
   /* OPTIONAL: paste a Formspree (or similar) endpoint here, e.g. 'https://formspree.io/f/xxxxxxxx'.
