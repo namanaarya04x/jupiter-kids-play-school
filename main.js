@@ -28,7 +28,7 @@
 (function(){
   /* OPTIONAL: paste a Formspree (or similar) endpoint here, e.g. 'https://formspree.io/f/xxxxxxxx'.
      When set, every enquiry is emailed to the school automatically, with no extra tap by the parent.
-     Leave it empty to use the "Open in Gmail / Other email app / Copy details" buttons only. */
+     Leave it empty to use the "Email app / Copy details" buttons only. */
   var FORM_ENDPOINT='';
 
   var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
@@ -95,11 +95,10 @@
     var child=$('#cname').value.trim(),msg=$('#msg').value.trim();
     var text='Admission enquiry - Jupiter Kids Play School\n\nParent: '+name+'\nMobile: '+ph+'\nClass: '+$('#cls').value+(child?'\nChild: '+child:'')+(em?'\nEmail: '+em:'')+(msg?'\nMessage: '+msg:'');
     var subj='Admission enquiry: '+name+' ('+$('#cls').value+')';
-    $('#gmail-send').href='https://mail.google.com/mail/?view=cm&fs=1&to=jupiterkidsplayschool@gmail.com&su='+encodeURIComponent(subj)+'&body='+encodeURIComponent(text);
     $('#mail-send').href='mailto:jupiterkidsplayschool@gmail.com?subject='+encodeURIComponent('Admission enquiry: '+name+' ('+$('#cls').value+')')+'&body='+encodeURIComponent(text);
     $('#done-text').textContent=text;
     var dm=$('#done-msg');
-    dm.textContent=hindi?'आपका संदेश तैयार है। नीचे Gmail खोलें और वहाँ Send दबाएँ।':'Your message is ready. Open it in Gmail below, then press Send there.';
+    dm.textContent=hindi?'आपका संदेश तैयार है। नीचे ईमेल ऐप दबाएँ और वहाँ Send दबाएँ।':'Your message is ready. Tap Email app below, then press Send there.';
     $('#done').hidden=false;
     if(FORM_ENDPOINT){
       fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
