@@ -1,4 +1,13 @@
 (function(){
+  /* Always start at the top: stop the browser restoring an old scroll position (unless the link has a #section). */
+  try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}
+  function top(){if(!location.hash)window.scrollTo({top:0,left:0,behavior:'instant'})}
+  top();
+  window.addEventListener('load',top);
+  window.addEventListener('pageshow',top);
+})();
+
+(function(){
   /* OPTIONAL: paste a Formspree (or similar) endpoint here, e.g. 'https://formspree.io/f/xxxxxxxx'.
      When set, every enquiry is emailed to the school automatically, with no extra tap by the parent.
      Leave it empty to use the "Open in Gmail / Other email app / Copy details" buttons only. */
