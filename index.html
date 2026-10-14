@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+/* Runs before the page is drawn: drop any #section from the address so the browser never jumps to it. */
+(function(){try{if(location.hash)history.replaceState(null,'',location.pathname+location.search);if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jupiter Kids Play School | Madhepura, Bihar</title>
 <meta name="description" content="Jupiter Kids Play School, Madhepura: Play Group, Nursery, LKG, UKG and Classes 1-8. Admissions open for 2026-27.">
@@ -10,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <div class="notice"><div class="wrap"><span>✦ <b data-hi="प्रवेश खुले हैं">Admissions open</b> <span data-hi="सत्र 2026-27 के लिए">for 2026-27</span></span><span data-hi="सोम–शनि · सुबह 8:00 से दोपहर 2:00">Mon–Sat · 8:00 AM – 2:00 PM</span></div></div>
@@ -184,6 +188,6 @@
   <a class="mb-enq" href="#contact" data-hi="प्रवेश पूछताछ">Enquire</a>
 </nav>
 
-<script src="main.js"></script>
+<script src="main.js?v=3"></script>
 </body>
 </html>
