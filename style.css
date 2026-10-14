@@ -193,3 +193,99 @@ footer a{text-decoration:none}footer a:hover{opacity:1;text-decoration:underline
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 [hidden]{display:none!important}
 img{max-width:100%}
+
+/* ===== Mobile-only refinements (phones). Desktop and tablet are untouched. ===== */
+.mbar{display:none}
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding-block:48px}
+  h2{font-size:1.85rem}
+  .lead{font-size:.98rem;margin-top:8px}
+  .eyebrow{font-size:.75rem;margin-bottom:6px}
+  .btn{min-height:50px;font-size:1.02rem}
+
+  /* top bar */
+  .notice{font-size:.78rem;padding-block:7px}
+  .notice .wrap>span:nth-child(2){display:none}
+  .bar{min-height:62px;gap:10px}
+  .brand{gap:10px}
+  .brand .logo{width:40px;height:40px}
+  .brand span:last-child{font-size:1rem;line-height:1.15}
+  .burger{width:42px;height:42px}
+  nav.main a{font-size:1.05rem;padding:14px 16px}
+
+  /* hero: centred, big thumb-friendly buttons */
+  .hero{padding-block:24px 36px;text-align:center}
+  .hero .grid{gap:18px}
+  .crest{width:min(58%,210px)}
+  .pill{font-size:.78rem;padding:6px 12px;margin-bottom:14px}
+  .hero h1{font-size:2.35rem;line-height:1.08}
+  .hero p.sub{font-size:1.02rem;margin:14px auto 0}
+  .hero .cta{flex-direction:column;gap:10px;margin-top:22px}
+  .hero .cta .btn{width:100%}
+
+  /* stats as four small cards */
+  .stats{padding-block:26px}
+  .stats .grid{gap:12px;row-gap:12px}
+  .stats .grid>div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px 8px}
+  .stats b{font-size:2rem}
+  .stats span{font-size:.82rem}
+
+  /* about */
+  .about .grid{gap:24px}
+  .ticks{gap:8px}
+  .ticks li{padding:12px 14px;font-size:.95rem;border-radius:14px}
+
+  /* classes + why: swipeable cards instead of a long stack */
+  .cards{margin-top:22px}
+  .cards.c3,.cards.c4{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-inline:-16px;padding:4px 16px 18px;scroll-padding-inline:16px;scrollbar-width:none}
+  .cards.c3::-webkit-scrollbar,.cards.c4::-webkit-scrollbar{display:none}
+  .cards.c3>.card{flex:0 0 80%;scroll-snap-align:start}
+  .cards.c4>.card{flex:0 0 76%;scroll-snap-align:start}
+  .card{padding:22px;border-radius:22px}
+  .card:hover{transform:none}
+  .dot{width:40px;height:40px;margin-bottom:14px}
+  .card h3{font-size:1.25rem}
+  #classes .wrap::after,#why .wrap::after{content:"Swipe for more →";display:block;text-align:right;font-size:.78rem;font-weight:700;color:var(--muted);margin-top:-6px}
+
+  /* gallery */
+  .gallery{gap:12px;margin-top:22px}
+  .tile{border-radius:22px;font-size:1.1rem}
+  .tile svg{width:42px;height:42px}
+  .tile:hover{transform:none}
+
+  /* admission steps: compact rows */
+  .steps{grid-template-columns:1fr;gap:10px;margin-top:22px}
+  .steps li{display:grid;grid-template-columns:38px 1fr;column-gap:14px;padding:16px;border-radius:18px;align-items:center}
+  .steps li::before{grid-row:1/span 2;margin:0}
+  .steps b{grid-column:2;margin:0;font-size:1.08rem}
+  .steps span{grid-column:2}
+  .faq{margin-top:22px;gap:10px}
+  details{padding:0 16px;border-radius:16px}
+  summary{padding:16px 0;font-size:.98rem}
+
+  /* contact + form */
+  .contact .grid{gap:26px}
+  .info{margin-top:18px;gap:16px}
+  .mapbtn{width:100%}
+  form.enq{padding:20px;border-radius:22px;gap:10px}
+  .err{min-height:0}
+  label{gap:6px}
+  input,select,textarea{font-size:16px;padding:14px}
+  .done-btns .btn{flex:1 1 100%}
+
+  /* footer */
+  footer{padding-block:40px calc(92px + env(safe-area-inset-bottom,0px))}
+  footer .grid{gap:22px}
+  .copy{flex-direction:column;gap:4px;margin-top:26px}
+
+  /* bottom action bar replaces the floating WhatsApp button */
+  .fab .wa{display:none}
+  .fab{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  .fab .up{width:44px;height:44px}
+  .mbar{display:grid;grid-template-columns:1fr 1.25fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:45;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border-radius:14px;font-weight:800;font-size:.9rem;text-decoration:none;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+  .mbar svg{width:20px;height:20px;flex:none}
+  .mbar .mb-wa{color:#1a9a4e;border-color:color-mix(in srgb,#1a9a4e 45%,var(--line))}
+  .mbar .mb-enq{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 6px 16px rgba(255,74,28,.3)}
+}
